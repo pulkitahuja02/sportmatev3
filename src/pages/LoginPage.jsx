@@ -16,7 +16,7 @@ const LoginPage = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <h1 className="text-4xl font-bold text-blue-600 mb-4">SportMate pulkit</h1>
+      <h1 className="text-4xl font-bold text-blue-600 mb-4">SportMate</h1>
       <p className="text-gray-700 italic mb-6">
         "Let's get back to the ground where we belong"
       </p>
