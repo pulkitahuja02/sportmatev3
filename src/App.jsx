@@ -5,7 +5,7 @@ const App = () =>
   return(
     <div>
        <div className="container bg-red-500">
-           <h1>Hello tailwind , pulkit this side</h1>
+           <h1>Hello Pulkit finally tailwind chal gya</h1>
        </div>
     </div>
   )
