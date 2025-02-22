@@ -1,48 +1,95 @@
 import { useState } from "react";
-import { useUser } from "../context/UserContext"; // Context se state access ki
+import { useUser } from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
-  console.log("Component re-render hua");
-  const { username, setUsername } = useUser(); // Global context ka username
-  const [password, setPassword] = useState(""); // Local state for password
+  const { username, setUsername } = useUser();
+  const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false); // Loading state
+  const [error, setError] = useState(""); // Error state
   const navigate = useNavigate();
 
   const handleLogin = () => {
+    if (!username && !password) {
+      setError("Please enter valid credentials");
+      return;
+    } else if (!username) {
+      setError("Please enter your username");
+      return;
+    } else if (!password) {
+      setError("Please enter your password");
+      return;
+    }
+
+    setError(""); // Clear error if all fields are valid
+    setIsLoading(true); // Show loading spinner
     console.log("Logging in with:", username, password);
-    console.log("Logging in with:", username, password);
-    navigate("/dashboard"); // Redirects Kardega Dashboard page par
+
+    // Simulate API call
+    setTimeout(() => {
+      setIsLoading(false);
+      navigate("/dashboard");
+    }, 2000);
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <h1 className="text-4xl font-bold text-blue-600 mb-4">SportMate</h1>
-      <p className="text-gray-700 italic mb-6">
-        "Let's get back to the ground where we belong Pulkitv2"
-      </p>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-white font-poppins">
+      {/* Logo and Tagline */}
+      <div className="text-center mb-8">
+        <h1 className="text-6xl font-bold text-green-600 mb-4">SportMate</h1>
+        <p className="text-lg text-black italic">
+          "Bring Back the Game, Bring Back the Passion."
+        </p>
+      </div>
 
-      <input
-        type="text"
-        placeholder="Enter Your Name"
-        className="w-64 px-4 py-2 border rounded-md mb-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-      />
+      {/* Login Form */}
+      <div className="bg-gray-50 p-8 rounded-xl shadow-lg w-full max-w-md">
+        <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Login</h2>
 
-      <input
-        type="password"
-        placeholder="Enter Password"
-        className="w-64 px-4 py-2 border rounded-md mb-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
+        {/* Error Message */}
+        {error && <p className="text-red-500 text-sm mb-4 text-center">{error}</p>}
 
-      <button
-        className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition"
-        onClick={handleLogin}
-      >
-        Click here to Login
-      </button>
+        {/* Username Input */}
+        <div className="mb-5">
+          <label className="block text-gray-700 text-sm font-medium mb-2">
+            Username
+          </label>
+          <input
+            type="text"
+            placeholder="Enter your username"
+            className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-500 transition duration-300"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </div>
+
+        {/* Password Input */}
+        <div className="mb-6">
+          <label className="block text-gray-700 text-sm font-medium mb-2">
+            Password
+          </label>
+          <input
+            type="password"
+            placeholder="Enter your password"
+            className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-500 transition duration-300"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+
+        {/* Login Button */}
+        <button
+          className="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition duration-300 transform hover:scale-105 flex items-center justify-center"
+          onClick={handleLogin}
+          disabled={isLoading}
+        >
+          {isLoading ? (
+            <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white"></div>
+          ) : (
+            "Login"
+          )}
+        </button>
+      </div>
     </div>
   );
 };
