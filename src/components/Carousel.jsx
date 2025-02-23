@@ -54,7 +54,7 @@ const Carousel = () => {
   return (
     <div className="relative mt-8">
       <div className="container mx-auto px-4">
-        <div className="relative overflow-hidden rounded-lg shadow-lg" style={{ height: "800px" }}> {/* Set fixed height for carousel container */}
+        <div className="relative overflow-hidden rounded-lg shadow-lg" style={{ height: "400px" }}> {/* Set fixed height for carousel container */}
           {/* Feature Slide */}
           <div className="flex transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
             {features.map((feature, index) => (
