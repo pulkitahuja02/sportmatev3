@@ -1,32 +1,40 @@
 // src/components/Carousel.jsx
 import React, { useState, useEffect } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import gameBuddiesImage from "../images/caraousel1.jpg";
-import tournamentsImage from "../images/caraousel2.jpg";
-import leaderboardImage from "../images/caraousel3.jpg";
-import communityImage from "../images/caraousel4.jpg";
+import gameBuddiesImageMobile from "../images/caraousel11.jpg"; // Mobile image (800x450 px)
+import gameBuddiesImageDesktop from "../images/caraousel12.jpg"; // Desktop image (1200x675 px)
+import tournamentsImageMobile from "../images/caraousel11.jpg"; // Mobile image (800x450 px)
+import tournamentsImageDesktop from "../images/caraousel12.jpg"; // Desktop image (1200x675 px)
+import leaderboardImageMobile from "../images/caraousel11.jpg"; // Mobile image (800x450 px)
+import leaderboardImageDesktop from "../images/caraousel12.jpg"; // Desktop image (1200x675 px)
+import communityImageMobile from "../images/caraousel11.jpg"; // Mobile image (800x450 px)
+import communityImageDesktop from "../images/caraousel12.jpg"; // Desktop image (1200x675 px)
 
 const Carousel = () => {
   const features = [
     {
       title: "Game Buddies",
       description: "Find and connect with players.",
-      image: gameBuddiesImage,
+      imageMobile: gameBuddiesImageMobile,
+      imageDesktop: gameBuddiesImageDesktop,
     },
     {
       title: "Tournaments",
       description: "Join or create tournaments.",
-      image: tournamentsImage,
+      imageMobile: tournamentsImageMobile,
+      imageDesktop: tournamentsImageDesktop,
     },
     {
       title: "Leaderboard",
       description: "Track your rankings.",
-      image: leaderboardImage,
+      imageMobile: leaderboardImageMobile,
+      imageDesktop: leaderboardImageDesktop,
     },
     {
       title: "Disclaimer",
       description: "We created this app to encourage you to step onto the field and enjoy the sport. We recommend using this site for no more than 15-20 minutes a day. Happy playing!",
-      image: communityImage,
+      imageMobile: communityImageMobile,
+      imageDesktop: communityImageDesktop,
     },
   ];
 
@@ -54,16 +62,19 @@ const Carousel = () => {
   return (
     <div className="relative mt-8">
       <div className="container mx-auto px-4">
-        <div className="relative overflow-hidden rounded-lg shadow-lg" style={{ height: "400px" }}> {/* Set fixed height for carousel container */}
+        {/* Carousel Container */}
+        <div className="relative overflow-hidden rounded-lg shadow-lg" style={{ height: "56.25vw", maxHeight: "500px" }}> {/* 16:9 aspect ratio */}
           {/* Feature Slide */}
           <div className="flex transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
             {features.map((feature, index) => (
               <div key={index} className="min-w-full flex-shrink-0">
                 {/* Image with responsive height */}
                 <img
-                  src={feature.image}
+                  srcSet={`${feature.imageMobile} 800w, ${feature.imageDesktop} 1200w`} // Responsive images
+                  sizes="(max-width: 600px) 800px, 1200px" // Breakpoints
+                  src={feature.imageDesktop} // Fallback image
                   alt={feature.title}
-                  className="w-full h-full object-contain" // Use object-contain to fit the entire image
+                  className="w-full h-full object-cover" // Use object-cover to fill the container
                 />
                 <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
                   <div className="text-white text-center">
