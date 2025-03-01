@@ -1,6 +1,4 @@
-// src/components/Carousel.jsx
 import React, { useState, useEffect } from "react";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const Carousel = () => {
   const quotes = [
@@ -21,12 +19,6 @@ const Carousel = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % quotes.length);
   };
 
-  const prevSlide = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? quotes.length - 1 : prevIndex - 1
-    );
-  };
-
   useEffect(() => {
     const interval = setInterval(() => {
       nextSlide();
@@ -42,7 +34,7 @@ const Carousel = () => {
           {quotes.map((quote, index) => (
             <p
               key={index}
-              className={`absolute text-lg md:text-2xl font-bold italic text-green-600 text-center px-6 transition-opacity duration-500 ${
+              className={`absolute text-lg md:text-2xl font-bold italic text-black text-center px-6 transition-opacity duration-500 ${
                 index === currentIndex ? "opacity-100" : "opacity-0"
               }`}
             >
@@ -50,20 +42,6 @@ const Carousel = () => {
             </p>
           ))}
         </div>
-
-        {/* Navigation Buttons */}
-        <button
-          onClick={prevSlide}
-          className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white bg-opacity-75 p-2 rounded-full shadow-lg hover:bg-opacity-100"
-        >
-          <FaChevronLeft className="text-2xl text-green-600" />
-        </button>
-        <button
-          onClick={nextSlide}
-          className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white bg-opacity-75 p-2 rounded-full shadow-lg hover:bg-opacity-100"
-        >
-          <FaChevronRight className="text-2xl text-green-600" />
-        </button>
       </div>
     </div>
   );
