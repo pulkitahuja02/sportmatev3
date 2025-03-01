@@ -7,7 +7,7 @@ const Navbar = () => {
   return (
     <>
       {/* Main Navbar */}
-      <nav className="bg-white p-6 shadow-md">
+      <nav className="bg-white p-6 pt-8 shadow-md"> {/* Added pt-8 for top padding */}
         <div className="container mx-auto flex justify-between items-center">
           {/* Left: SportMate (Green Color) */}
           <h1 className="text-4xl font-bold text-green-600">SportMate</h1>
@@ -18,11 +18,6 @@ const Navbar = () => {
             <a href="/tournaments" className="text-xl text-gray-700 hover:text-green-600">Tournaments</a>
             <a href="/leaderboard" className="text-xl text-gray-700 hover:text-green-600">Leaderboard</a>
             <a href="/community" className="text-xl text-gray-700 hover:text-green-600">Community</a>
-          </div>
-
-          {/* Right: Profile Icon (Desktop View) */}
-          <div className="hidden md:block text-gray-700 hover:text-green-600">
-            <FaUserCircle className="text-4xl" />
           </div>
 
           {/* Hamburger Menu (Mobile View) */}
@@ -44,9 +39,12 @@ const Navbar = () => {
         )}
       </nav>
 
-      {/* Fixed Bottom Bar for Mobile */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white shadow-lg p-4 flex justify-center items-center">
-        <a href="/my-profile" className="flex items-center text-xl text-gray-700 hover:text-green-600">
+      {/* My Profile Button (Navbar ke neeche, center-aligned) */}
+      <div className="w-full flex justify-center bg-green-50 py-4 shadow-sm">
+        <a
+          href="/my-profile"
+          className="flex items-center justify-center bg-green-600 text-white text-xl font-semibold py-3 px-6 rounded-lg hover:bg-green-700 transition duration-300"
+        >
           <FaUserCircle className="text-2xl mr-2" />
           <span>My Profile</span>
         </a>

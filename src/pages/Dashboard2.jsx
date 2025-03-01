@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import Carousel from "../components/Carousel";
 import UpcomingTournaments from "../components/UpcomingTournaments";
-import Component2 from "../components/component2"; // Import Component2
+import Challenge from "../components/Challenge"; // Import the new component
 
 const DashboardPage = () => {
   return (
@@ -20,8 +20,8 @@ const DashboardPage = () => {
           {/* Upcoming Tournaments */}
           <UpcomingTournaments />
 
-          {/* Component 2 */}
-          <Component2 />
+          {/* Challenge Players */}
+          <Challenge />
         </div>
       </div>
     </div>
