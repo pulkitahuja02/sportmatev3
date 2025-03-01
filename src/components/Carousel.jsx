@@ -1,90 +1,54 @@
 // src/components/Carousel.jsx
 import React, { useState, useEffect } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import gameBuddiesImageMobile from "../images/caraousel12.jpeg"; // Mobile image (800x450 px)
-import gameBuddiesImageDesktop from "../images/caraousel1.jpg"; // Desktop image (1200x675 px)
-import tournamentsImageMobile from "../images/caraousel12.jpeg"; // Mobile image (800x450 px)
-import tournamentsImageDesktop from "../images/caraousel11.jpg"; // Desktop image (1200x675 px)
-import leaderboardImageMobile from "../images/caraousel12.jpeg"; // Mobile image (800x450 px)
-import leaderboardImageDesktop from "../images/caraousel11.jpg"; // Desktop image (1200x675 px)
-import communityImageMobile from "../images/caraousel12.jpeg"; // Mobile image (800x450 px)
-import communityImageDesktop from "../images/caraousel11.jpg"; // Desktop image (1200x675 px)
 
 const Carousel = () => {
-  const features = [
+  const quotes = [
     {
-      title: "Game Buddies",
-      description: "Find and connect with players.",
-      imageMobile: gameBuddiesImageMobile,
-      imageDesktop: gameBuddiesImageDesktop,
+      text: "This site is your reminder to step outside, breathe fresh air, and enjoy the thrill of sports. Keep your time here short – the field is calling!",
     },
     {
-      title: "Tournaments",
-      description: "Join or create tournaments.",
-      imageMobile: tournamentsImageMobile,
-      imageDesktop: tournamentsImageDesktop,
+      text: "Find your rivals and teammates in your area, challenge yourself, and rise to the top. Play hard, connect stronger, and dominate the game!",
     },
     {
-      title: "Leaderboard",
-      description: "Track your rankings.",
-      imageMobile: leaderboardImageMobile,
-      imageDesktop: leaderboardImageDesktop,
-    },
-    {
-      title: "Disclaimer",
-      description: "We created this app to encourage you to step onto the field and enjoy the sport. We recommend using this site for no more than 15-20 minutes a day. Happy playing!",
-      imageMobile: communityImageMobile,
-      imageDesktop: communityImageDesktop,
+      text: "In a world full of screens, sports remind us what it feels like to be alive.",
     },
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % features.length);
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % quotes.length);
   };
 
   const prevSlide = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? features.length - 1 : prevIndex - 1
+      prevIndex === 0 ? quotes.length - 1 : prevIndex - 1
     );
   };
 
-  // Automatic Slide Change
   useEffect(() => {
     const interval = setInterval(() => {
       nextSlide();
-    }, 3000);
-
+    }, 6000);
     return () => clearInterval(interval);
   }, [currentIndex]);
 
   return (
-    <div className="relative mt-8">
-      <div className="container mx-auto px-4">
-        {/* Carousel Container */}
-        <div className="relative overflow-hidden rounded-lg shadow-lg" style={{ height: "56.25vw", maxHeight: "500px" }}> {/* 16:9 aspect ratio */}
-          {/* Feature Slide */}
-          <div className="flex transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
-            {features.map((feature, index) => (
-              <div key={index} className="min-w-full flex-shrink-0">
-                {/* Image with responsive height */}
-                <img
-                  srcSet={`${feature.imageMobile} 800w, ${feature.imageDesktop} 1200w`} // Responsive images
-                  sizes="(max-width: 600px) 800px, 1200px" // Breakpoints
-                  src={feature.imageDesktop} // Fallback image
-                  alt={feature.title}
-                  className="w-full h-full object-cover" // Use object-cover to fill the container
-                />
-                <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-                  <div className="text-white text-center">
-                    <h2 className="text-3xl font-bold">{feature.title}</h2>
-                    <p className="text-xl mt-2">{feature.description}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+    <div className="relative mt-8 w-full flex justify-center">
+      <div className="relative w-full max-w-3xl bg-white rounded-lg shadow-lg overflow-hidden p-6 md:p-12">
+        {/* Quote Container */}
+        <div className="relative h-48 flex items-center justify-center">
+          {quotes.map((quote, index) => (
+            <p
+              key={index}
+              className={`absolute text-lg md:text-2xl font-bold italic text-green-600 text-center px-6 transition-opacity duration-500 ${
+                index === currentIndex ? "opacity-100" : "opacity-0"
+              }`}
+            >
+              "{quote.text}"
+            </p>
+          ))}
         </div>
 
         {/* Navigation Buttons */}
@@ -92,13 +56,13 @@ const Carousel = () => {
           onClick={prevSlide}
           className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white bg-opacity-75 p-2 rounded-full shadow-lg hover:bg-opacity-100"
         >
-          <FaChevronLeft className="text-2xl text-gray-700" />
+          <FaChevronLeft className="text-2xl text-green-600" />
         </button>
         <button
           onClick={nextSlide}
           className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white bg-opacity-75 p-2 rounded-full shadow-lg hover:bg-opacity-100"
         >
-          <FaChevronRight className="text-2xl text-gray-700" />
+          <FaChevronRight className="text-2xl text-green-600" />
         </button>
       </div>
     </div>
