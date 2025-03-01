@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import Carousel from "../components/Carousel";
 import UpcomingTournaments from "../components/UpcomingTournaments";
-import Component2 from "../components/Component2"; // Import Component2
+import Component2 from "../components/component2"; // Import Component2
 
 const DashboardPage = () => {
   return (
