@@ -1,14 +1,14 @@
 // src/components/Carousel.jsx
 import React, { useState, useEffect } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import gameBuddiesImageMobile from "../images/caraousel11.jpg"; // Mobile image (800x450 px)
-import gameBuddiesImageDesktop from "../images/caraousel12.jpg"; // Desktop image (1200x675 px)
-import tournamentsImageMobile from "../images/caraousel11.jpg"; // Mobile image (800x450 px)
-import tournamentsImageDesktop from "../images/caraousel12.jpg"; // Desktop image (1200x675 px)
-import leaderboardImageMobile from "../images/caraousel11.jpg"; // Mobile image (800x450 px)
-import leaderboardImageDesktop from "../images/caraousel12.jpg"; // Desktop image (1200x675 px)
-import communityImageMobile from "../images/caraousel11.jpg"; // Mobile image (800x450 px)
-import communityImageDesktop from "../images/caraousel12.jpg"; // Desktop image (1200x675 px)
+import gameBuddiesImageMobile from "../images/caraousel12.jpeg"; // Mobile image (800x450 px)
+import gameBuddiesImageDesktop from "../images/caraousel1.jpg"; // Desktop image (1200x675 px)
+import tournamentsImageMobile from "../images/caraousel12.jpeg"; // Mobile image (800x450 px)
+import tournamentsImageDesktop from "../images/caraousel11.jpg"; // Desktop image (1200x675 px)
+import leaderboardImageMobile from "../images/caraousel12.jpeg"; // Mobile image (800x450 px)
+import leaderboardImageDesktop from "../images/caraousel11.jpg"; // Desktop image (1200x675 px)
+import communityImageMobile from "../images/caraousel12.jpeg"; // Mobile image (800x450 px)
+import communityImageDesktop from "../images/caraousel11.jpg"; // Desktop image (1200x675 px)
 
 const Carousel = () => {
   const features = [
