@@ -5,21 +5,27 @@ const UpcomingTournaments = () => {
   const tournaments = [
     {
       id: 1,
-      name: " St Angel Football League",
-      date: " 25th March 2025",
-      location: " St Angel School",
+      name: "St Angel Football League",
+      date: "25th March 2025",
+      location: "St Angel School",
     },
     {
       id: 2,
-      name: " MAIT Cricket Premiere League",
-      date: " 30th  March 2025",
-      location: " MAIT Ground",
+      name: "MAIT Cricket Premiere League",
+      date: "30th March 2025",
+      location: "MAIT Ground",
     },
     {
       id: 3,
-      name: " Basketball Championship",
-      date: " 5th March 2025",
-      location: " Japenese Park",
+      name: "Basketball Championship",
+      date: "5th March 2025",
+      location: "Japanese Park",
+    },
+    {
+      id: 4,
+      name: "Delhi Marathon 2025",
+      date: "15th April 2025",
+      location: "India Gate, Delhi",
     },
   ];
 
@@ -38,11 +44,11 @@ const UpcomingTournaments = () => {
             <div className="mt-2 space-y-1">
               <p className="text-green-700 flex items-center">
                 <FaCalendarAlt className="mr-2" />
-                <span className="font-medium">Date : </span> {tournament.date}
+                <span className="font-medium">Date:</span> {tournament.date}
               </p>
               <p className="text-green-700 flex items-center">
                 <FaMapMarkerAlt className="mr-2" />
-                <span className="font-medium">Location :</span> {tournament.location}
+                <span className="font-medium">Location:</span> {tournament.location}
               </p>
             </div>
           </div>
