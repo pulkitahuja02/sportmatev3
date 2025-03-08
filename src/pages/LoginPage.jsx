@@ -89,6 +89,9 @@ const LoginPage = () => {
             "Login"
           )}
         </button>
+        <p className="text-center mt-4 text-gray-700">
+         New user? <span className="text-green-600 cursor-pointer hover:underline" onClick={() => navigate("/signup")}>Signup</span>
+        </p>
       </div>
     </div>
   );

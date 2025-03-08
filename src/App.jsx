@@ -2,7 +2,8 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { UserProvider } from "./context/UserContext";
 import LoginPage from "./pages/LoginPage";
 import Dashboard from "./pages/Dashboard";
-import MyProfile from "./pages/MyProfile";  // ✅ Import MyProfile
+import MyProfile from "./pages/MyProfile";
+import SignupPage from "./pages/SignupPage";  // ✅ Import SignupPage
 
 function App() {
   return (
@@ -11,7 +12,8 @@ function App() {
         <Routes>
           <Route path="/" element={<LoginPage />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/MyProfile" element={<MyProfile />} />  {/* ✅ Add Route */}
+          <Route path="/MyProfile" element={<MyProfile />} />
+          <Route path="/signup" element={<SignupPage />} />  {/* ✅ Add Route */}
         </Routes>
       </Router>
     </UserProvider>
@@ -19,4 +21,3 @@ function App() {
 }
 
 export default App;
-
