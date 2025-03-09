@@ -15,20 +15,34 @@ const SignupPage = () => {
   const sportsOptions = ["Cricket", "Football", "Badminton", "Tennis", "Basketball", "Volleyball"];
 
   // Handle form submission
-  const handleSignup = () => {
+  const handleSignup = async () => {
     if (!name || !age || !gender || !address || sports.length < 3) {
       setError("Please fill all fields and select at least 3 sports.");
       return;
     }
-
-    setError(""); // Clear error if all fields are valid
-    setIsLoading(true); // Show loading spinner
-
-    // Simulate API call
-    setTimeout(() => {
+  
+    setError("");
+    setIsLoading(true);
+  
+    try {
+      const response = await fetch("http://localhost:5000/api/auth/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, age, gender, address, sports }),
+      });
+  
+      const data = await response.json();
+      if (response.ok) {
+        alert("Signup successful!");
+        navigate("/dashboard");
+      } else {
+        setError(data.error || "Signup failed. Please try again.");
+      }
+    } catch (err) {
+      setError("Network error. Please try again.");
+    } finally {
       setIsLoading(false);
-      navigate("/dashboard"); // Redirect to dashboard after signup
-    }, 2000);
+    }
   };
 
   // Handle sports selection

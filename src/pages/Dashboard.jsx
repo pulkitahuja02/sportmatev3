@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import Carousel from "../components/Carousel";
 import UpcomingTournaments from "../components/UpcomingTournaments";
-import Challenge from "../components/challenge"; // Import the new component
+import Challenge from "../components/Challenge"; // Import the new component
 
 const DashboardPage = () => {
   return (
